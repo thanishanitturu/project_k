@@ -14,6 +14,11 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended:false}))
 
+app.get("/",(req,res)=>
+{
+    res.render("home")
+})
+
 app.get("/login",(req,res)=>
 {
     res.render("login");
@@ -22,6 +27,28 @@ app.get("/login",(req,res)=>
 app.get("/signup",(req,res)=>
 {
     res.render("signup")
+})
+
+app.post("/login",async(req,res)=>
+{
+    const username=req.body.username;
+    const password=req.body.password;
+    const existingUser=await collection.findOne({name:req.body.username})
+    if(!existingUser)
+    {
+        res.send("username doesn't exist")
+    }
+    const isPassword=await bcrypt.compare(req.body.password,existingUser.password)
+    if(isPassword)
+    {
+        res.render("home")
+    }
+    else
+    {
+        res.send("wrong password")
+    }
+
+
 })
 
 app.post("/signup",async(req,res)=>
@@ -38,14 +65,17 @@ app.post("/signup",async(req,res)=>
     }
     else
     {
+        const saltRounds=10
+        const hashPassword=await bcrypt.hash(data.password,saltRounds)
+        data.password=hashPassword
         data.save();
     }
 
 })
 
 
-const port=4000
+const port=5000
 app.listen(port,()=>
 {
-    console.log("server is running in port 4000")
+    console.log("server is running in port 5000")
 })
