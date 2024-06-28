@@ -88,3 +88,9 @@ nav ul li{
         display:block;
     }
 }
+.events{
+    margin: 0 20px;
+}
+.events img{
+    height: 350px;
+}
