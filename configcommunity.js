@@ -3,7 +3,7 @@ const connect=mongoose.connect("mongodb://localhost:27017/login-turt");
 
 connect.then(()=>
 {
-    console.log("Database successfully connected")
+    console.log("Database successfully connected with community")
 })
 
 const LoginSchema=new mongoose.Schema(
@@ -21,6 +21,6 @@ const LoginSchema=new mongoose.Schema(
     }
 );
 
-const collection=new mongoose.model("users",LoginSchema)
+const collection=new mongoose.model("community",LoginSchema)
 
 module.exports=collection;
