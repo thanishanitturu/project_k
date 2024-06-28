@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+}
+nav{
+    background-image: linear-gradient(to left,green,white);
+    height: 60px;
+    width: 100%;
+}
+nav ul li a{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    opacity: 0.8;
+}
+a:hover{
+    opacity: 1;
+}
+label{
+    line-height: 60px;
+    padding: 0 20px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+label a{
+    text-decoration: none;
+    color: green;
+}
+label  img{
+    height: 50px;
+}
+nav ul{
+    float: right;
+    margin-right: 35px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 9px;
+}
+.checkbtn{
+    font-size: 1.7rem;
+    line-height: 60px;
+    float: right;
+    color: white;
+    margin: 0 8px;
+    display: none;
+    cursor: pointer;
+}
+.checkbtn2{
+    font-size: 1.7rem;
+    line-height: 60px;
+    float: right;
+    color: white;
+    margin: 0 8px;
+    display: none;
+    cursor: pointer;
+}
+#check{
+    display: none;
+}
+@media (max-width: 650px){
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 200px;
+        height: 100vh;
+        background-image: linear-gradient(to top, white, green);
+        top: 60px;
+        left: -300px;
+        box-shadow: 0 0 6px green;
+    }
+    nav ul li{
+        display: block;
+    }
+    #check:checked ~ ul {
+        left: 0;
+    }
+    #check:checked ~ .checkbtn {
+        display: none;
+    }
+    #check:checked ~ .checkbtn2 {
+        display:block;
+    }
+}
+.events{
+    margin: 0 20px;
+}
+.events img{
+    height: 350px;
+}
